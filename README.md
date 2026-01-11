@@ -21,28 +21,33 @@ A refactored document retrieval and Q&A API built with FastAPI, LangGraph, and Q
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd bithealth
    ```
 
 2. **Create virtual environment**
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Start Qdrant database**
+
    ```bash
    docker run -d -p 6333:6333 -p 6334:6334 qdrant/qdrant
    ```
 
 5. **Run the application**
+
    ```bash
    # Development mode
    uvicorn bithealth.api:app --reload --host 0.0.0.0 --port 8000
@@ -54,11 +59,13 @@ A refactored document retrieval and Q&A API built with FastAPI, LangGraph, and Q
 ## 📡 API Endpoints
 
 ### Health & Monitoring
+
 - `GET /health` - Health check
 - `GET /debug/config` - Show configuration
 - `GET /debug/services` - Show service status
 
 ### Document Operations
+
 - `POST /ingest` - Ingest a document
 - `POST /query` - Query documents
 - `GET /documents` - List documents
@@ -68,6 +75,7 @@ A refactored document retrieval and Q&A API built with FastAPI, LangGraph, and Q
 ## 💡 API Examples
 
 ### Ingest a Document
+
 ```bash
 curl -X POST http://localhost:8000/ingest \
   -H "Content-Type: application/json" \
@@ -78,6 +86,7 @@ curl -X POST http://localhost:8000/ingest \
 ```
 
 ### Query Documents
+
 ```bash
 curl -X POST http://localhost:8000/query \
   -H "Content-Type: application/json" \
@@ -88,6 +97,7 @@ curl -X POST http://localhost:8000/query \
 ```
 
 ### Health Check
+
 ```bash
 curl http://localhost:8000/health
 # Returns: {"status": "OK", "qdrant": "connected", "workflow": "ready", "documents_count": 1}
@@ -142,12 +152,14 @@ MAX_RETRIEVAL_RESULTS=5
 ## 🧪 Development
 
 ### Running Tests
+
 ```bash
 # Add tests in the future
 pytest
 ```
 
 ### Code Quality
+
 ```bash
 # Add linting and formatting in the future
 black .
@@ -155,6 +167,7 @@ flake8 .
 ```
 
 ### Docker Deployment
+
 ```bash
 # Build and run with Docker (add Dockerfile first)
 docker build -t bithealth .
@@ -186,6 +199,7 @@ MIT License - see LICENSE file for details.
 This codebase was originally an onboarding exercise that deliberately omitted key engineering practices to evaluate design instincts. The original README focused on identifying architectural issues and planning improvements.
 
 **What was improved:**
+
 - ✅ Eliminated global state management
 - ✅ Introduced dependency injection
 - ✅ Separated concerns with service/repository layers
@@ -194,4 +208,4 @@ This codebase was originally an onboarding exercise that deliberately omitted ke
 - ✅ Enabled unit testability
 - ✅ Created extensible architecture for future changes
 
-The refactored code now demonstrates production-ready software engineering practices! 🚀 
+The refactored code now demonstrates production-ready software engineering practices! 🚀
